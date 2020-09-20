@@ -66,7 +66,7 @@
             echo '<li>';
           }
           ?>
-          <a href="<?= bae_url('p/harga') ?>">Harga</a></li>
+          <a href="<?= base_url('p/harga') ?>">Harga</a></li>
           <?php
           if (uri('2') == 'testimoni') {
             echo '<li class="active">';
