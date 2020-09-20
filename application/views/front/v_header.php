@@ -59,7 +59,14 @@
           }
           ?>
           <a href="<?= base_url('p/produk') ?>">Produk</a></li>
-          <li><a href="pricing.html">Harga</a></li>
+          <?php
+          if (uri('2') == 'harga') {
+            echo '<li class="active">';
+          } else {
+            echo '<li>';
+          }
+          ?>
+          <a href="<?= bae_url('p/harga') ?>">Harga</a></li>
           <?php
           if (uri('2') == 'testimoni') {
             echo '<li class="active">';
