@@ -53,4 +53,5 @@ $route['default_controller'] = 'Front';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['p/(:any)']  = 'Front/$1';
-$route['Auth/(:any)'] = 'Auth/$1';
+$route['p/(:any)/(:any)'] = 'Front/$1/$2';
+$route['auth/(:any)'] = 'Auth/$1';
