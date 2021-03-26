@@ -19,9 +19,23 @@ class M_Admin extends CI_Model
     return $this->db->get('tb_produk');
   }
 
-  public function daftarharga()
+  public function daftarharga($id_produk = false)
   {
-    return $this->db->get('tb_paket');
+    $this->db->select('id_paket, nama_paket, deskripsi, harga_paket, terlaris, nama_produk, tb_paket.id_produk');
+    $this->db->from('tb_paket');
+    $this->db->join('tb_produk', 'tb_paket.id_produk = tb_produk.id_produk');
+    if ($id_produk == false) {
+      return $this->db->get();
+    } else {
+      $this->db->where('substring(sha1(tb_paket.id_produk), 17, 7) = "' . $id_produk . '"');
+      return $this->db->get();
+    }
+    //return $this->db->get('tb_paket');
+  }
+
+  public function datafaq()
+  {
+    return $this->db->get('tb_faq');
   }
 
   public function datatestimoni()

@@ -34,12 +34,20 @@
                         <td><?= $no++ ?></td>
                         <td style="text-align: center;"><img src="<?= base_url($p->foto_produk) ?>" class="img-circle" style="height: 50px; width: 50px"></td>
                         <td><?= $p->nama_produk ?></td>
-                        <td><?= substr($p->deskripsi_produk, 0, 130) ?>[....]</td>
+                        <td>
+                          <?php
+                          if (strlen($p->deskripsi_produk) > 130) {
+                            echo substr($p->deskripsi_produk, 0, 130) . '[....]';
+                          } else {
+                            echo substr($p->deskripsi_produk, 0, 130);
+                          }
+                          ?>
+                        </td>
                         <td style="text-align: center;">
                           <a href="<?= base_url('admin/produk/editproduk/' . substr(sha1($p->id_produk), 9, 5)) ?>">
-                            <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-xs btn-warning"><i class="fa fa-edit"></i></button>
                           </a>
-                          <button class="btn btn-sm btn-danger" onclick="hapus_produk('<?= substr(sha1($p->id_produk), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
+                          <button class="btn btn-xs btn-danger" onclick="hapus_produk('<?= substr(sha1($p->id_produk), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
                         </td>
                       </tr>
                     <?php

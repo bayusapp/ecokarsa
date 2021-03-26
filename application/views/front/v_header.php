@@ -58,7 +58,7 @@
             echo '<li>';
           }
           ?>
-          <a href="<?= base_url('p/produk') ?>">Produk</a></li>
+          <a href="<?= base_url('produk') ?>">Produk</a></li>
           <?php
           if (uri('2') == 'harga') {
             echo '<li class="active">';
@@ -66,7 +66,7 @@
             echo '<li>';
           }
           ?>
-          <a href="<?= base_url('p/harga') ?>">Harga</a></li>
+          <a href="<?= base_url('harga') ?>">Harga</a></li>
           <?php
           if (uri('2') == 'testimoni') {
             echo '<li class="active">';
@@ -74,7 +74,7 @@
             echo '<li>';
           }
           ?>
-          <a href="<?= base_url('p/testimoni') ?>">Testimoni</a></li>
+          <a href="<?= base_url('testimoni') ?>">Testimoni</a></li>
           <?php
           if (uri('2') == 'tentangkami') {
             echo '<li class="active">';
@@ -82,7 +82,7 @@
             echo '<li>';
           }
           ?>
-          <a href="<?= base_url('p/tentangkami') ?>">Tentang Kami</a></li>
+          <a href="<?= base_url('tentangkami') ?>">Tentang Kami</a></li>
           <?php
           if (uri('2') == 'kontak') {
             echo '<li class="active">';
@@ -90,7 +90,7 @@
             echo '<li>';
           }
           ?>
-          <a href="<?= base_url('p/kontak') ?>">Kontak</a></li>
+          <a href="<?= base_url('kontak') ?>">Kontak</a></li>
         </ul>
       </nav>
       <div class="header-social-links">

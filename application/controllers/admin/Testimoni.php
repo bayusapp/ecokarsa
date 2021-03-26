@@ -18,6 +18,7 @@ class Testimoni extends CI_Controller
   public function index()
   {
     $data = $this->data;
+    $data['title'] = 'Testimoni | ';
     $data['testimoni'] = $this->admin->datatestimoni()->result();
     view('admin/v_header', $data);
     view('admin/v_testimoni', $data);

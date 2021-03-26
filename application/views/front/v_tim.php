@@ -113,12 +113,6 @@
               <div class="member" data-aos="fade-up">
                 <div class="member-img">
                   <img src="<?= base_url($t->foto) ?>" class="img-fluid" alt="">
-                  <div class="social">
-                    <a href=""><i class="icofont-twitter"></i></a>
-                    <a href=""><i class="icofont-facebook"></i></a>
-                    <a href=""><i class="icofont-instagram"></i></a>
-                    <a href=""><i class="icofont-linkedin"></i></a>
-                  </div>
                 </div>
                 <div class="member-info">
                   <h4><?= $t->nama ?></h4>

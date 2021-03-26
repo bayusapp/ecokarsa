@@ -82,8 +82,8 @@
                         <td><?= $b->judul_banner ?></td>
                         <td><?= substr($b->deskripsi_banner, 0, 130) ?>[....]</td>
                         <td style="text-align: center;">
-                          <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-banner<?= $b->id_banner ?>"><i class="fa fa-edit"></i></button>
-                          <button class="btn btn-sm btn-danger" onclick="hapus_banner('<?= substr(sha1($b->id_banner), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
+                          <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-banner<?= $b->id_banner ?>"><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-xs btn-danger" onclick="hapus_banner('<?= substr(sha1($b->id_banner), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
                         </td>
                         <div class="modal fade" id="edit-banner<?= $b->id_banner ?>">
                           <div class="modal-dialog">

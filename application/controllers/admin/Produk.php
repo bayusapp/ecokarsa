@@ -18,6 +18,7 @@ class Produk extends CI_Controller
   public function index()
   {
     $data = $this->data;
+    $data['title']  = 'Katalog Produk | ';
     $data['produk'] = $this->admin->daftarproduk()->result();
     view('admin/v_header', $data);
     view('admin/v_produk', $data);
@@ -27,6 +28,7 @@ class Produk extends CI_Controller
   public function tambahproduk()
   {
     $data = $this->data;
+    $data['title'] = 'Tambah Katalog | ';
     view('admin/v_header', $data);
     view('admin/v_tambahproduk');
     view('admin/v_footer');
@@ -39,10 +41,11 @@ class Produk extends CI_Controller
       redirect('admin/produk');
     } else {
       $nama_produk      = input('nama_produk');
-      $deskripsi_produk = input('deskripsi_produk');
+      $deskripsi_produk = nl2br(htmlspecialchars_decode(input('deskripsi_produk')), ENT_HTML5);
       $input  = array(
         'nama_produk'       => $nama_produk,
-        'deskripsi_produk'  => $deskripsi_produk
+        'deskripsi_produk'  => $deskripsi_produk,
+        'slug_produk'       => str_replace(' ', '-', strtolower($nama_produk))
       );
       $foto       = rand(10, 99) . '-' . str_replace(' ', '_', $_FILES['foto_produk']['name']);
       $config['upload_path']    = 'assets/img/produk/';
@@ -62,6 +65,7 @@ class Produk extends CI_Controller
   public function editproduk($id)
   {
     $data = $this->data;
+    $data['title'] = 'Edit Katalog | ';
     $data['produk'] = $this->db->where('substring(sha1(id_produk), 10, 5) = "' . $id . '"')->get('tb_produk')->row();
     view('admin/v_header', $data);
     view('admin/v_editproduk', $data);
@@ -76,10 +80,11 @@ class Produk extends CI_Controller
     } else {
       $cek = $this->db->where('substring(sha1(id_produk), 10, 5) = "' . $id . '"')->get('tb_produk')->row();
       $nama_produk      = input('nama_produk');
-      $deskripsi_produk = input('deskripsi_produk');
+      $deskripsi_produk = nl2br(htmlspecialchars_decode(input('deskripsi_produk')), ENT_HTML5);
       $input  = array(
         'nama_produk'       => $nama_produk,
-        'deskripsi_produk'  => $deskripsi_produk
+        'deskripsi_produk'  => $deskripsi_produk,
+        'slug_produk'       => str_replace(' ', '-', strtolower($nama_produk))
       );
       $foto       = rand(10, 99) . '-' . str_replace(' ', '_', $_FILES['foto_produk']['name']);
       $config['upload_path']    = 'assets/img/produk/';

@@ -18,6 +18,7 @@ class Banner extends CI_Controller
   public function index()
   {
     $data = $this->data;
+    $data['title'] = 'Banner Foto | ';
     $data['banner'] = $this->admin->databanner()->result();
     view('admin/v_header', $data);
     view('admin/v_banner', $data);

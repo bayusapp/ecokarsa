@@ -20,17 +20,27 @@ class Front extends CI_Controller
     $data = $this->data;
     $data['title']  = $data['perusahaan']->nama_perusahaan . ' - Profil Perusahaan';
     $data['banner'] = $this->admin->databanner()->result();
+    $data['faq']    = $this->admin->datafaq()->result();
     view('front/v_header', $data);
     view('front/v_homepage', $data);
     view('front/v_footer', $data);
   }
 
-  public function produk()
+  public function produk($slug_produk = null)
   {
     $data = $this->data;
-    $data['title']  = $data['perusahaan']->nama_perusahaan . ' - Profil Perusahaan';
-    view('front/v_header', $data);
-    view('front/v_produk', $data);
+    if ($slug_produk == null) {
+      $data['title']  = $data['perusahaan']->nama_perusahaan . ' - Profil Perusahaan';
+      view('front/v_header', $data);
+      view('front/v_produk', $data);
+    } else {
+      $data['detail'] = $this->db->where('slug_produk', $slug_produk)->get('tb_produk')->row();
+      $data['title']  = $data['detail']->nama_produk . ' - ' . $data['perusahaan']->nama_perusahaan;
+      $id_produk = substr(sha1($data['detail']->id_produk), 16, 7);
+      $data['harga']  = $this->admin->daftarharga($id_produk)->result();
+      view('front/v_header', $data);
+      view('front/v_detailproduk', $data);
+    }
     view('front/v_footer', $data);
   }
 
@@ -39,6 +49,7 @@ class Front extends CI_Controller
     $data = $this->data;
     $data['detail'] = $this->db->where('substring(sha1(id_produk), 17, 7) = "' . $id . '"')->get('tb_produk')->row();
     $data['title']  = $data['detail']->nama_produk . ' - ' . $data['perusahaan']->nama_perusahaan;
+    $data['harga']  = $this->admin->daftarharga($id)->result();
     view('front/v_header', $data);
     view('front/v_detailproduk', $data);
     view('front/v_footer', $data);
@@ -48,6 +59,7 @@ class Front extends CI_Controller
   {
     $data = $this->data;
     $data['title']  = 'Harga - ' . $data['perusahaan']->nama_perusahaan;
+    $data['produk'] = $this->admin->daftarproduk()->result();
     $data['harga']  = $this->admin->daftarharga()->result();
     view('front/v_header', $data);
     view('front/v_harga', $data);

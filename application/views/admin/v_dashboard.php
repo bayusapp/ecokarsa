@@ -4,7 +4,6 @@
       <section class="content-header">
         <h1>Dashboard</h1>
       </section>
-
       <!-- Main content -->
       <section class="content">
         <!-- Small boxes (Stat box) -->
@@ -14,7 +13,6 @@
             <div class="small-box bg-aqua">
               <div class="inner">
                 <h3>150</h3>
-
                 <p>Katalog</p>
               </div>
               <div class="icon">
@@ -28,7 +26,7 @@
             <div class="small-box bg-green">
               <div class="inner">
                 <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Staff / Team</p>
+                <p>Klien</p>
               </div>
               <div class="icon">
                 <i class="ion ion-ios-people"></i>
@@ -41,8 +39,7 @@
             <div class="small-box bg-yellow">
               <div class="inner">
                 <h3>44</h3>
-
-                <p>User Registrations</p>
+                <p>Project</p>
               </div>
               <div class="icon">
                 <i class="ion ion-android-bookmark"></i>
@@ -55,7 +52,6 @@
             <div class="small-box bg-red">
               <div class="inner">
                 <h3>65</h3>
-
                 <p>Unique Visitors</p>
               </div>
               <div class="icon">
@@ -70,7 +66,6 @@
         <div class="row">
         </div>
         <!-- /.row (main row) -->
-
       </section>
       <!-- /.content -->
     </div>

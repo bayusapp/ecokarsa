@@ -72,9 +72,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <a href="#">Lupa Username/Password</a><br>
-
     </div>
     <!-- /.login-box-body -->
   </div>

@@ -84,8 +84,8 @@
                         <td><?= $t->nama_testimoni ?></td>
                         <td><?= $t->deskripsi_testimoni ?></td>
                         <td style="text-align: center;">
-                          <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-testimoni<?= $t->id_testimoni ?>"><i class="fa fa-edit"></i></button>
-                          <button class="btn btn-sm btn-danger" onclick="hapus_testimoni('<?= substr(sha1($t->id_testimoni), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
+                          <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-testimoni<?= $t->id_testimoni ?>"><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-xs btn-danger" onclick="hapus_testimoni('<?= substr(sha1($t->id_testimoni), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
                         </td>
                         <div class="modal fade" id="edit-testimoni<?= $t->id_testimoni ?>">
                           <div class="modal-dialog">

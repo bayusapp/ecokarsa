@@ -18,6 +18,7 @@ class Dashboard extends CI_Controller
   public function index()
   {
     $data = $this->data;
+    $data['title'] = 'Dashboard | ';
     view('admin/v_header', $data);
     view('admin/v_dashboard');
     view('admin/v_footer');

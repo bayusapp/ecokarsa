@@ -38,34 +38,6 @@
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <div class="form-group">
-                                <label for="facebook" style="font-size: 15px;">Facebook</label>
-                                <input type="text" name="facebook" id="facebook" class="form-control" placeholder="Masukkan Alamat Facebook">
-                              </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <div class="form-group">
-                                <label for="twitter" style="font-size: 15px;">Twitter</label>
-                                <input type="text" name="twitter" id="twitter" class="form-control" placeholder="Masukkan Alamat Twitter">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <div class="form-group">
-                                <label for="instagram" style="font-size: 15px;">Instagram</label>
-                                <input type="text" name="instagram" id="instagram" class="form-control" placeholder="Masukkan Alamat Instagram">
-                              </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <div class="form-group">
-                                <label for="linkedin" style="font-size: 15px;">LinkedIn</label>
-                                <input type="text" name="linkedin" id="linkedin" class="form-control" placeholder="Masukkan Alamat LinkedIn">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
                             <div class="col-md-12 col-sm-12">
                               <div class="form-group">
                                 <label for="foto" style="font-size: 15px;">Foto</label>
@@ -105,8 +77,8 @@
                         <td><?= $t->nama ?></td>
                         <td><?= $t->posisi ?></td>
                         <td style="text-align: center;">
-                          <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-tim<?= $t->id_tim ?>"><i class="fa fa-edit"></i></button>
-                          <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                          <button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#edit-tim<?= $t->id_tim ?>"><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-xs btn-danger" onclick="hapus_tim('<?= substr(sha1($t->id_tim), 9, 5) ?>')"><i class="fa fa-trash"></i></button>
                         </td>
                         <div class="modal fade" id="edit-tim<?= $t->id_tim ?>">
                           <div class="modal-dialog">
@@ -116,47 +88,19 @@
                                   <span aria-hidden="true">&times;</span></button>
                                 <h3 class="modal-title" style="text-align: center;">Edit Anggota</h3>
                               </div>
-                              <form method="post" action="<?= base_url('admin/simpantim') ?>" enctype="multipart/form-data" role="form">
+                              <form method="post" action="<?= base_url('admin/tim/updatetim/' . substr(sha1($t->id_tim), 9, 5)) ?>" enctype="multipart/form-data" role="form">
                                 <div class="modal-body">
                                   <div class="row">
                                     <div class="col-md-6 col-sm-12">
                                       <div class="form-group">
                                         <label for="nama" style="font-size: 15px;">Nama</label>
-                                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama">
+                                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama" value="<?= $t->nama; ?>">
                                       </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                       <div class="form-group">
                                         <label for="posisi" style="font-size: 15px;">Posisi/Jabatan</label>
-                                        <input type="text" name="posisi" id="posisi" class="form-control" placeholder="Masukkan Posisi/Jabatan">
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-6 col-sm-12">
-                                      <div class="form-group">
-                                        <label for="facebook" style="font-size: 15px;">Facebook</label>
-                                        <input type="text" name="facebook" id="facebook" class="form-control" placeholder="Masukkan Alamat Facebook">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12">
-                                      <div class="form-group">
-                                        <label for="twitter" style="font-size: 15px;">Twitter</label>
-                                        <input type="text" name="twitter" id="twitter" class="form-control" placeholder="Masukkan Alamat Twitter">
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-6 col-sm-12">
-                                      <div class="form-group">
-                                        <label for="instagram" style="font-size: 15px;">Instagram</label>
-                                        <input type="text" name="instagram" id="instagram" class="form-control" placeholder="Masukkan Alamat Instagram">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12">
-                                      <div class="form-group">
-                                        <label for="linkedin" style="font-size: 15px;">LinkedIn</label>
-                                        <input type="text" name="linkedin" id="linkedin" class="form-control" placeholder="Masukkan Alamat LinkedIn">
+                                        <input type="text" name="posisi" id="posisi" class="form-control" placeholder="Masukkan Posisi/Jabatan" value="<?= $t->posisi; ?>">
                                       </div>
                                     </div>
                                   </div>

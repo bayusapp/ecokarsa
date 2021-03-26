@@ -9,7 +9,7 @@
         }
         ?>
         <div class="row">
-          <div class="col-md-12 col-sm-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="nav-tabs-custom">
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab">Data Perusahaan</a></li>
@@ -111,14 +111,35 @@
                   </form>
                 </div>
                 <div class="tab-pane" id="tab_2">
-                  <form method="post" action="<?= base_url('admin/pengaturan/updatetentangperusahaan') ?>">
-                    <div class="box-body">
-                      <textarea name="tentang_perusahaan" id="text-editor" class="form-control" placeholder="Masukkan Deskripsi Tentang Perusahaan Anda"><?= $perusahaan->tentang_perusahaan ?></textarea>
-                    </div>
-                    <div class="box-footer">
-                      <input type="submit" name="submit_tentang" class="btn btn-primary" value="Submit">
-                    </div>
-                  </form>
+                  <div class="row" style="margin-left: 1px; width: 99%">
+                    <form method="post" action="<?= base_url('admin/pengaturan/updatetentangperusahaan') ?>" enctype="multipart/form-data">
+                      <div class="col-md-8">
+                        <div class="box-body">
+                          <textarea name="tentang_perusahaan" id="text-editor" class="form-control" placeholder="Masukkan Deskripsi Tentang Perusahaan Anda"><?= $perusahaan->tentang_perusahaan ?></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="box-body">
+                          <h4 class="box-title">Gambar</h4>
+                        </div>
+                        <div class="box-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <input type="file" accept="image/*" name="foto_tentang" id="foto_tentang" class="form-control" onchange="document.getElementById('hasil_gambar').src = window.URL.createObjectURL(this.files[0]); document.getElementById('hasil_gambar').style.display = 'block'">
+                            </div>
+                          </div>
+                          <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-12">
+                              <img id="hasil_gambar" width="100%" height="200" style="display: none;">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box-footer">
+                        <input type="submit" name="submit_tentang" class="btn btn-primary" value="Submit">
+                      </div>
+                    </form>
+                  </div>
                 </div>
                 <div class="tab-pane" id="tab_3">
                   <form method="post" action="<?= base_url('admin/pengaturan/updatelogo') ?>" enctype="multipart/form-data">

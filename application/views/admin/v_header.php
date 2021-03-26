@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title><?= $title . $perusahaan->nama_perusahaan ?></title>
   <?php $url_bootstrap = base_url('assets/admin/'); ?>
   <?php
   if ($perusahaan->icon_website != '' || $perusahaan->icon_website != null) {
@@ -42,6 +42,11 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <style>
+    .table tbody tr td {
+      vertical-align: middle;
+    }
+  </style>
 </head>
 
 <body class="hold-transition skin-blue fixed sidebar-mini">
@@ -51,7 +56,17 @@
       <!-- Logo -->
       <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">Logo Ecokarsa</span>
+        <?php
+        if ($perusahaan->icon_website != '' || $perusahaan->icon_website != null) {
+        ?>
+          <span class="logo-mini"><img src="<?= base_url($perusahaan->icon_website) ?>"></span>
+        <?php
+        } else {
+        ?>
+          <span class="logo-mini">Logo Ecokarsa</span>
+        <?php
+        }
+        ?>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg" style="font-weight: bold;">Admin Ecokarsa</span>
       </a>
@@ -65,7 +80,7 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li>
-              <a href="#"><i class="fa fa-sign-out"></i> Log Out</a>
+              <a href="<?= base_url('auth/logout') ?>"><i class="fa fa-sign-out"></i> Log Out</a>
             </li>
           </ul>
         </div>
@@ -90,7 +105,6 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-          <li class="header" style="text-align: center;">MENU</li>
           <?php
           if (strpos(uri('2'), 'dashboard') !== false) {
             echo '<li class="active">';
@@ -135,6 +149,17 @@
           </a>
           </li>
           <?php
+          if (strpos(uri('2'), 'FAQ') !== false) {
+            echo '<li class="active">';
+          } else {
+            echo '<li>';
+          }
+          ?>
+          <a href="<?= base_url('admin/FAQ') ?>">
+            <i class="fa fa-question-circle"></i> <span>FAQ</span>
+          </a>
+          </li>
+          <?php
           if (strpos(uri('2'), 'banner') !== false) {
             echo '<li class="active">';
           } else {
@@ -145,18 +170,19 @@
             <i class="fa fa-picture-o"></i> <span>Banner Foto</span>
           </a>
           </li>
-          <li>
-            <a href="<?= base_url('admin/tim') ?>">
-              <i class="fa fa-users"></i> <span>Tim</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-users"></i> <span>Data Pengguna Aplikasi</span>
-            </a>
+          <?php
+          if (uri('2') == 'tim') {
+            echo '<li class="active">';
+          } else {
+            echo '<li>';
+          }
+          ?>
+          <a href="<?= base_url('admin/tim') ?>">
+            <i class="fa fa-users"></i> <span>Tim</span>
+          </a>
           </li>
           <?php
-          if (strpos(uri('2'), 'pengaturan') !== false) {
+          if (uri('2') == 'pengaturan' && uri('3') == null) {
             echo '<li class="active">';
           } else {
             echo '<li>';
@@ -166,10 +192,16 @@
             <i class="fa fa-cog"></i> <span>Pengaturan Data Perusahaan</span>
           </a>
           </li>
-          <li>
-            <a href="pages/widgets.html">
-              <i class="fa fa-user"></i> <span>Pengaturan Akun</span>
-            </a>
+          <?php
+          if (uri('3') == 'akun') {
+            echo '<li class="active">';
+          } else {
+            echo '<li>';
+          }
+          ?>
+          <a href="<?= base_url('admin/pengaturan/akun') ?>">
+            <i class="fa fa-user"></i> <span>Pengaturan Akun</span>
+          </a>
           </li>
         </ul>
       </section>

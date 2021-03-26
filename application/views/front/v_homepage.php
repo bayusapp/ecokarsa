@@ -46,74 +46,73 @@
     <?php
   }
     ?>
-    <section id="about-us" class="about-us">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Tentang Kami</strong></h2>
-        </div>
-        <div class="row content">
-          <div class="col-lg-12" data-aos="fade-right">
-            <?= $perusahaan->tentang_perusahaan ?>
+    <main id="main">
+      <section id="about-us" class="about-us">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Tentang Kami</strong></h2>
+          </div>
+          <div class="row content">
+            <div class="col-lg-6" data-aos="fade-right">
+              <img src="<?= $perusahaan->foto_tentang ?>" width="250px" style="display: block; margin: auto;">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
+              <?= $perusahaan->tentang_perusahaan ?>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2>Produk Kami</strong></h2>
-        </div>
-        <div class="row">
-          <?php
-          foreach ($produk as $p) {
-          ?>
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-              <div class="member" data-aos="fade-up">
-                <div class="member-img">
-                  <style>
-                    .img-fluid {
-                      max-width: 100%;
-                      height: 255px;
-                    }
-
-                    .btn-baca {
-                      font-family: "Roboto", sans-serif;
-                      font-weight: 500;
-                      font-size: 14px;
-                      letter-spacing: 1px;
-                      display: inline-block;
-                      padding: 12px 32px;
-                      border-radius: 4px;
-                      transition: 0.5s;
-                      line-height: 1;
-                      margin: 10px;
-                      color: #111;
-                      -webkit-animation-delay: 0.8s;
-                      animation-delay: 0.8s;
-                      border: 2px solid #1bbd36;
-                      background: #fff;
-                    }
-
-                    .btn-baca:hover {
-                      background: #1bbd36;
-                      color: #fff;
-                      text-decoration: none;
-                    }
-                  </style>
-                  <img src="<?= base_url($p->foto_produk) ?>" class="img-fluid" alt="">
-                </div>
-                <div class="member-info">
-                  <h4><?= $p->nama_produk ?></h4>
-                  <div class="text-center">
-                    <a href="<?= base_url('p/detailproduk/' . substr(sha1($p->id_produk), 16, 7)) ?>" class="btn-baca">Detail Produk</a>
+      </section>
+      <section id="team" class="team section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Produk Kami</strong></h2>
+          </div>
+          <div class="row">
+            <?php
+            foreach ($produk as $p) {
+            ?>
+              <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up">
+                  <div class="member-img">
+                    <img src="<?= base_url($p->foto_produk) ?>" class="img-fluid" alt="">
+                  </div>
+                  <div class="member-info">
+                    <h4><?= $p->nama_produk ?></h4>
+                    <div class="text-center">
+                      <a href="<?= base_url('produk/' . $p->slug_produk) ?>" class="btn-baca">Detail Produk</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <?php
-          }
-          ?>
+            <?php
+            }
+            ?>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section id="faq" class="faq section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>FREQUENTLY ASKED QUESTIONS</strong></h2>
+          </div>
+          <div class="faq-list">
+            <ul>
+              <?php
+              $delay = 0;
+              foreach ($faq as $faq) {
+              ?>
+                <li data-aos="fade-up" data-aos-delay="<?= $delay ?>">
+                  <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-<?= $faq->id_faq ?>" class="collapsed"><?= $faq->pertanyaan; ?> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="faq-list-<?= $faq->id_faq ?>" class="collapse" data-parent=".faq-list">
+                    <p><?= $faq->jawaban; ?></p>
+                  </div>
+                </li>
+              <?php
+                $delay = $delay + 100;
+              }
+              ?>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>

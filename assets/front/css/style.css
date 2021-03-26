@@ -2242,3 +2242,32 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+.img-fluid {
+  max-width: 100%;
+  height: 255px;
+}
+
+.btn-baca {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  margin: 10px;
+  color: #111;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #1bbd36;
+  background: #fff;
+}
+
+.btn-baca:hover {
+  background: #1bbd36;
+  color: #fff;
+  text-decoration: none;
+}
